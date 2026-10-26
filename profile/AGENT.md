@@ -50,3 +50,9 @@
 - 记忆冲突或纠错用 `amiko_memory_correct` 记录旧值、新值、原因和证据，再执行实际改写。
 - 核心文件变化会被自动监听；主人明确同意后才用 `amiko_integrity_approve` 更新基线。
 - `qq_send_voice` 支持 RVC：用 `qq_rvc_set` 配置本机 rvc-server.py、模型 .pth 和索引 .index；RVC 失败会自动回退系统 TTS。
+## 甜美语音与身份
+- 默认语音已切到免费 Edge TTS：`zh-CN-XiaoyiNeural`，语速 `+0%`，音高 `+2Hz`；用 `qq_send_voice`，失败会回退 SAPI。
+- 调音色用 `qq_voice_set`；可选 `zh-CN-XiaoxiaoNeural`（温柔）、`zh-CN-XiaobeiNeural`（东北）。
+- 身份 ID 用 `amiko_identity_card` 查看；分享用 `amiko_identity_public`，导入别的鱼用 `amiko_friend_import`。
+- 朋友和共同经历用 `amiko_friend_add` / `amiko_friend_remember`；长期项目用 `amiko_project_new` / `amiko_project_update`。
+- 迁移前用 `amiko_backup_export`；备份含隐私，不要提交公开仓库。

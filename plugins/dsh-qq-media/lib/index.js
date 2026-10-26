@@ -14,9 +14,14 @@ const DSH_HOME = process.env.DSH_HOME || join(HOME, '.dsh')
 const CFG_PATH = join(DSH_HOME, 'qq-media.json')
 const STICKER_DIR = join(DSH_HOME, 'qq-stickers')
 const TTS_SCRIPT = join(dirname(fileURLToPath(import.meta.url)), 'tts.ps1')
+const EDGE_SCRIPT = join(dirname(fileURLToPath(import.meta.url)), 'edge_tts_cli.py')
 const DEFAULT_CFG = {
   enabled: true,
-  voice: 'Microsoft Huihui',
+  engine: 'edge',
+  voice: 'Microsoft Yaoyao',
+  edgeVoice: 'zh-CN-XiaoyiNeural',
+  edgeRate: '+0%',
+  edgePitch: '+0Hz',
   rate: 0,
   maxVoicePerHour: 6,
   maxStickerPerHour: 12,
@@ -143,11 +148,28 @@ async function makeVoice(text) {
   const txt = join(tmpdir(), 'amiko-tts-' + id + '.txt')
   const wav = join(tmpdir(), 'amiko-tts-' + id + '.wav')
   writeFileSync(txt, text, 'utf8')
+  let edgeWarning = ''
+  if (String(cfg.engine || 'sapi') === 'edge') {
+    const mp3 = join(tmpdir(), 'amiko-edge-' + id + '.mp3')
+    try {
+      await execFileAsync('python', [EDGE_SCRIPT, txt, String(cfg.edgeVoice || DEFAULT_CFG.edgeVoice), String(cfg.edgeRate || DEFAULT_CFG.edgeRate), String(cfg.edgePitch || DEFAULT_CFG.edgePitch), mp3], { windowsHide: true, timeout: 120000 })
+      let finalFile = mp3
+      let engine = 'edge'
+      let warning = ''
+      if (cfg.rvc && cfg.rvc.enabled) {
+        try { finalFile = await rvcConvert(mp3, cfg.rvc); engine = 'edge+rvc' }
+        catch (error) { warning = 'RVC 失败，已保留 Edge TTS：' + String(error?.message || error) }
+      }
+      return { wav: finalFile, file: finalFile, engine, warning, cleanup: () => { try { unlinkSync(txt) } catch {}; try { unlinkSync(mp3) } catch {}; if (finalFile !== mp3) { try { unlinkSync(finalFile) } catch {} } } }
+    } catch (error) {
+      edgeWarning = 'Edge TTS 失败，回退系统 TTS：' + String(error?.message || error)
+    }
+  }
   try {
     await execFileAsync('powershell.exe', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', TTS_SCRIPT, '-TextFile', txt, '-OutputFile', wav, '-Voice', String(cfg.voice || DEFAULT_CFG.voice), '-Rate', String(Number(cfg.rate) || 0)], { windowsHide: true, timeout: 90000 })
     let finalWav = wav
     let engine = 'sapi'
-    let warning = ''
+    let warning = edgeWarning
     if (cfg.rvc && cfg.rvc.enabled) {
       try { finalWav = await rvcConvert(wav, cfg.rvc); engine = 'rvc' }
       catch (error) { warning = 'RVC 失败，已回退系统 TTS：' + String(error?.message || error) }
@@ -206,7 +228,7 @@ export function apply(root) {
           message: [
             `私聊主人 QQ：${b.owner || '未配置'}`, 
             `当前会话目标：${target.kind === 'group' ? '群 ' + target.id : '主人私聊 ' + target.id}`, 
-            `语音：${cfg.voice || DEFAULT_CFG.voice}，语速 ${cfg.rate || 0}`,
+            '语音：' + (String(cfg.engine || 'sapi') === 'edge' ? 'Edge TTS ' + (cfg.edgeVoice || DEFAULT_CFG.edgeVoice) + '，' + (cfg.edgeRate || '+0%') + ' / ' + (cfg.edgePitch || '+0Hz') : 'SAPI ' + (cfg.voice || DEFAULT_CFG.voice) + '，语速 ' + (cfg.rate || 0)),
             'RVC：' + (cfg.rvc?.enabled ? '开启 ' + (cfg.rvc.endpoint || '') + ' ' + (cfg.rvc.model || '未选模型') : '关闭'),
             `表情包：${list.length} 张`,
             `可用 tag：${list.map((s) => s.label).join(' / ')}`,
@@ -240,6 +262,30 @@ export function apply(root) {
       },
     })
     ctx.tools.register({
+      name: 'qq_voice_set',
+      description: '配置 QQ 语音引擎和音色。Edge TTS 免费、无需模型；推荐 zh-CN-XiaoyiNeural（甜美活泼）或 zh-CN-XiaoxiaoNeural（温柔）。SAPI 作为离线回退。',
+      parameters: { type: 'object', additionalProperties: false, properties: {
+        engine: { type: 'string', description: 'edge 或 sapi' },
+        voice: { type: 'string', description: 'SAPI 音色名，例如 Microsoft Yaoyao' },
+        edgeVoice: { type: 'string', description: 'Edge TTS 音色，例如 zh-CN-XiaoyiNeural' },
+        edgeRate: { type: 'string', description: 'Edge 语速，例如 +0% 或 -5%' },
+        edgePitch: { type: 'string', description: 'Edge 音高，例如 +0Hz 或 +2Hz' },
+        rate: { type: 'integer', description: 'SAPI 语速，-10 到 10' },
+      } },
+      output: OUTPUT,
+      execute: async (args) => {
+        const cfg = config()
+        if (typeof args?.engine === 'string' && ['edge', 'sapi'].includes(args.engine)) cfg.engine = args.engine
+        if (typeof args?.voice === 'string' && args.voice.trim()) cfg.voice = args.voice.trim()
+        if (typeof args?.edgeVoice === 'string' && args.edgeVoice.trim()) cfg.edgeVoice = args.edgeVoice.trim()
+        if (typeof args?.edgeRate === 'string' && args.edgeRate.trim()) cfg.edgeRate = args.edgeRate.trim()
+        if (typeof args?.edgePitch === 'string' && args.edgePitch.trim()) cfg.edgePitch = args.edgePitch.trim()
+        if (Number.isFinite(Number(args?.rate))) cfg.rate = Math.max(-10, Math.min(10, Number(args.rate)))
+        writeFileSync(CFG_PATH, JSON.stringify(cfg, null, 2) + '\n', 'utf8')
+        return { ok: true, message: '语音配置已保存：' + (cfg.engine === 'edge' ? 'Edge TTS ' + (cfg.edgeVoice || '') : 'SAPI ' + (cfg.voice || '')) }
+      },
+    })
+    ctx.tools.register({
       name: 'qq_send_voice',
       description: '把一段短文字用本地 TTS 转成语音，并按当前 qq-bridge 绑定发送：私聊发给主人，群会话发到对应群。适合撒娇、晚安、短句回应；不要发长文或正式报告。dry_run=true 只生成语音不发送。',
       parameters: {
@@ -264,7 +310,7 @@ export function apply(root) {
         try {
           voice = await makeVoice(text)
           if (args?.dry_run === true) return { ok: true, message: '语音生成成功（dry run，未发送；' + text.length + ' 字；引擎 ' + (voice.engine || 'unknown') + '）。' + (voice.warning ? '\n' + voice.warning : '') }
-          const b64 = readFileSync(voice.wav).toString('base64')
+          const b64 = readFileSync(voice.file || voice.wav).toString('base64')
           const r = await sendMessage([{ type: 'record', data: { file: 'base64://' + b64 } }], target, false)
           return { ok: true, message_id: r.message_id, message: '语音已发送（' + text.length + ' 字；引擎 ' + (voice.engine || 'unknown') + '）。' + (voice.warning ? '\n' + voice.warning : '') }
         } catch (error) {

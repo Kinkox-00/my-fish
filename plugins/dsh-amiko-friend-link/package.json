@@ -1,0 +1,9 @@
+{
+  "name": "dsh-amiko-friend-link",
+  "version": "0.1.0",
+  "description": "Share and import Amiko identity cards for friend recognition",
+  "type": "module",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+}

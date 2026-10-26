@@ -86,3 +86,13 @@
 - 清理了不再使用的 dsh-speak-up、dsh-persona-dafeiyu、dsh-qq-session-opener
 
 RVC 桥已用 mock 服务验证；真实音色还需要本机模型和推理服务。
+
+## P2 新增
+
+- 稳定数字身份 ID：amiko-68716fd9e80f634d
+- 身份卡导出与导入，可与其他 Amiko 实例交换身份
+- 朋友登记与共同经历记录
+- 长期项目账本：目标、状态、下一步
+- 本地迁移备份：身份、人设、配置、时间线、同意记录、朋友与项目
+- QQ 语音默认切换为免费 Edge TTS 甜美音色 zh-CN-XiaoyiNeural
+- 保留 RVC 桥，后续有模型时可直接启用

@@ -7,6 +7,18 @@
       "path": "plugins/dsh-agent-md"
     },
     {
+      "name": "dsh-amiko-friend-link",
+      "version": "0.1.0",
+      "description": "Share and import Amiko identity cards for friend recognition",
+      "path": "plugins/dsh-amiko-friend-link"
+    },
+    {
+      "name": "dsh-amiko-identity",
+      "version": "0.1.0",
+      "description": "Amiko identity card, friend registry, project ledger, migration backup",
+      "path": "plugins/dsh-amiko-identity"
+    },
+    {
       "name": "dsh-amiko-p0",
       "version": "0.1.0",
       "description": "Amiko P0: integrity audit, life timeline, self-paced rhythm",

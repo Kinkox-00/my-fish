@@ -1,0 +1,9 @@
+{
+  "name": "dsh-amiko-identity",
+  "version": "0.1.0",
+  "description": "Amiko identity card, friend registry, project ledger, migration backup",
+  "type": "module",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+}
