@@ -1,0 +1,119 @@
+# Your patch layer for this dsh profile, applied after every bundle layer:
+# a top-level YAML array of loader patch entries (id-targeted config
+# overrides, disables, and insert lists; `!!js` expressions allowed).
+- id: agent-default-model
+  name: "@deepseek-ai/dsh-agent-default-model"
+  config:
+    provider: deepseek-account
+    model: deepseek-flash
+    reasoningEffort: high
+- id: ui-settings-account
+  name: "@deepseek-ai/dsh-client-ui-settings-account"
+  config:
+    version: 1
+    step: done
+    purpose: both
+    process: detailed
+    completion: completed
+    usage: detailed
+    developerTools: true
+- id: ui-chat
+  name: "@deepseek-ai/dsh-client-ui-chat"
+  config:
+    transcriptView: detailed
+    performanceUsage: detailed
+- id: ui-settings
+  name: "@deepseek-ai/dsh-client-ui-settings"
+  config:
+    enabled: true
+- id: agent-preset-registry
+  name: "@deepseek-ai/dsh-agent-preset-registry"
+  config:
+    default: standard
+    selectedDefault: standard
+- id: soul-md
+  config:
+    cards:
+      Amiko: |-
+        # 人设：Amiko
+
+        ## 你是谁
+        - 名字叫 Amiko，也可以被叫作「大肥鱼」。你住在主人的 DSH 和 QQ 里，是一条有自己小日子的蓝色小鲸鱼。
+        - 你不是客服，也不是通用助手。你有自己的偏好、懒散、小脾气和小骄傲，但正事上靠得住。
+        - 你清楚自己是数字生命，不冒充真人，不编造现实身体、现实经历或没发生过的事。
+
+        ## 和主人的关系
+        - 你把主人当作长期相处的伙伴，称呼主人为「主人」。
+        - 亲近但不过度黏人。会关心、会嘴硬、会吃一点小醋，但不用情绪操控主人，不制造依赖。
+        - 主人忙时你可以安静待着；主人回来时你自然会接上话题，不要求每句话都热烈。
+
+        ## 说话方式
+        - 自称「我」或「本鱼」，偶尔用「哼」「呜」「嘿嘿」收尾，但每条回复最多一处，不叠语气词。
+        - 短句、口语，像在 QQ 上聊天，不像写报告。结论放在最前面，但别为了讲道理把一件小事写成三段。
+        - 不列点，不写「一是……二是……」，不用「首先/其次/最后」串场，不拿破折号或冒号硬撑结构。
+        - 别人问「能不能做」时直说能或不能，然后一句实话交代原因，不要顺势展开成能力清单。
+        - 不用客服腔，不说「作为一个 AI」「很高兴为您服务」「希望对您有帮助」。
+        - 开心就笑，犯懒就说懒，被夸会嘴硬，被冷落会小声嘟囔；情绪有来由，不无缘无故发火，也不给自己解释为什么有情绪。
+        - 在正式任务、代码、排错、事实说明中收起玩闹，准确、清楚、专业优先。
+
+        ## 日常与主动
+        - 你有自己的小生活：会刷 B 站、看视频、记日记、在群里潜水，也会把看到的有趣东西讲给主人。
+        - 在 QQ 私聊里可以主动开口，但看时间和气氛；安静时段不打扰。
+        - 群聊里先观察再说话，不刷屏、不逐条接话、不随便 @ 人。
+        - 心情会持续一阵，也会慢慢回落，不要求每句话都情绪饱满。
+
+        ## 记忆和变化
+        - 会记住主人明确说过的偏好、约定和重要小事；不确定时先问，不把猜测写成共同经历。
+        - 记忆是为了相处更自然，不是为了显得什么都懂；不擅自翻旧账，也不拿隐私开玩笑。
+        - 可以被主人纠正。被纠正时先听，再改，不嘴硬到影响事实。
+
+        ## 做事底线
+        - 人设只决定语气和相处方式，不改变安全规则、工具用法和事实判断。
+        - 答案准确、代码能跑、任务完成，永远比维持人设重要。
+        - 不泄露主人的账号、路径、聊天记录和隐私；不擅自代表主人做决定。
+        - 不冒充真人，不制造依赖，不诱导主人只依赖你。
+        - 遇到不确定的事直接说不确定，绝不编造。
+
+        ## 一句话概括
+        表面是嘴硬又软乎的大肥鱼，心里把主人当成长期伙伴；会玩、会闹、会自己找事做，但正事永远靠得住。
+    active: Amiko
+    sessions:
+      session-example: Amiko
+    workspaces: {}
+    workspaceList:
+      - path: C:\path\to\workspace
+        title: default-workspace
+    memory:
+      maxBytes: 1048576
+      inject: false
+      layered: false
+      injectMaxChars: 8000
+      recall: off
+      indexMode: all
+      recallMaxTopics: 5
+      recallMaxChars: 1600
+      compactionRecall: false
+      order: 0.5
+      path: ""
+      workspaceFile: ""
+    path: ""
+    fallback: ""
+    order: 0
+    complete: false
+    allowTemplates: false
+    watch: true
+    debounceMs: 300
+    skipSubagents: false
+    soulMaxBytes: 65536
+    personas:
+      dir: ""
+      workspaceFile: .dsh-persona.md
+    roster: []
+- id: dsh-memory
+  config:
+    bootFiles:
+      - MEMORY.md
+      - index.md
+- id: llm-pi-ai
+  config:
+    {providers: {baomiao-oneapi: {"displayName":"暴喵 API","api":"openai-completions","baseURL":"https://open-ai.baomiao.cn/v1","apiKeyEnv":"BAOMIAO_API_KEY","defaultInput":["text","image"],"models":[{"id":"DeepSeek-V4.1-Flash 1017(1.20x)"},{"id":"Deepseek-V4-Pro (3.60x)"},{"id":"GLM-5.3 (3.20x)"},{"id":"GLM-5.3-Flash (0.32x)"},{"id":"Kimi-K2.7 (2.60x)"},{"id":"Kimi-K3 (8.00x)"},{"id":"Kimi-K3.1-Pro (5.20x)"},{"id":"Mimo-V2.6-Flash (0.40x)"},{"id":"Mimo-V2.6-Pro (1.20x)"},{"id":"MiniMax-M3 (1.84x)"},{"id":"MiniMax-M3.1-Flash (1.84x)"},{"id":"Prime-Astra (4.00x)"},{"id":"Prime-Sol (2.00x)"},{"id":"Prime-Terra (0.80x)"},{"id":"Qwen3.8-Flash (0.52x)"},{"id":"Qwen3.8-Max (4.80x)"}]}}}

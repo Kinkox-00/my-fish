@@ -1,0 +1,9 @@
+{
+  "name": "dsh-qq-session-opener",
+  "version": "0.1.0",
+  "description": "Open or resume DSH sessions for the QQ bridge",
+  "type": "module",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+}

@@ -1,0 +1,99 @@
+{
+  "plugins": [
+    {
+      "name": "dsh-agent-md",
+      "version": "0.2.0",
+      "description": "AGENT.md 人格配置 —— 像 VS Code 那样用 Markdown 配置模型人格/性格：全局一份 + 每个项目一份（项目覆盖全局），可在设置页可视化编辑，也能一键打开原文件。",
+      "path": "plugins/dsh-agent-md"
+    },
+    {
+      "name": "dsh-amiko-p0",
+      "version": "0.1.0",
+      "description": "Amiko P0: integrity audit, life timeline, self-paced rhythm",
+      "path": "plugins/dsh-amiko-p0"
+    },
+    {
+      "name": "dsh-bili-whale",
+      "version": "0.4.6",
+      "description": "养一条有日子的鱼：让 DSH 里的 agent 自己刷 B 站、看懂视频、写两本日记，把值得的 @ 你。设置里有「养鱼」完整设置页（27 项）+ 依赖体检 + cookie 写入 + 共享配置（与工具链同一份 bili-whale.config.json）。",
+      "path": "plugins/dsh-bili-whale"
+    },
+    {
+      "name": "dsh-feiyu-mood",
+      "version": "0.7.2",
+      "description": "给 AI 伙伴一个会自己判断、你看得见的心情：每轮聊完自动判断涨跌，右下角挂饰点开看数值 + 情绪 + 时间线；心情怎么告诉她（不告诉 / 只说心情 / 说她刚才那件事）和可信度门槛都能在设置里改。",
+      "path": "plugins/dsh-feiyu-mood"
+    },
+    {
+      "name": "dsh-fish-memory",
+      "version": "1.3.1",
+      "description": "给 DSH 里的会话一份会淡忘的长期记忆，每条都带时间。",
+      "path": "plugins/dsh-fish-memory"
+    },
+    {
+      "name": "dsh-fish-tone",
+      "version": "0.3.0",
+      "description": "双向鱼群拓扑 · 人味插件：把话往人的方向掰一点点（带设置页）",
+      "path": "plugins/dsh-fish-tone"
+    },
+    {
+      "name": "dsh-persona-dafeiyu",
+      "version": "0.5.0",
+      "description": "人设插件 for DeepSeek Harness：内置大肥鱼、阿茶与听澜，支持导入自定义人设（文件或粘贴）与单条导出，可按全局 / 工作区 / 会话三档生效，切换后下一个请求即时生效、无需重启；界面中英双语。",
+      "path": "plugins/dsh-persona-dafeiyu"
+    },
+    {
+      "name": "dsh-qq-bridge",
+      "version": "1.0.4",
+      "description": "通到 QQ：DSH 里的 AI 伙伴和 QQ 双向互通 —— 它说完话自动发到 QQ，你在 QQ 里说的话自动转进 DSH。走 OneBot 11 HTTP（SnowLuma / NapCat 都行）。",
+      "path": "plugins/dsh-qq-bridge"
+    },
+    {
+      "name": "dsh-qq-media",
+      "version": "0.1.0",
+      "description": "Amiko QQ voice and sticker tools",
+      "path": "plugins/dsh-qq-media"
+    },
+    {
+      "name": "dsh-qq-session-opener",
+      "version": "0.1.0",
+      "description": "Open or resume DSH sessions for the QQ bridge",
+      "path": "plugins/dsh-qq-session-opener"
+    },
+    {
+      "name": "dsh-qq-session-resumer",
+      "version": "0.1.0",
+      "description": "Resume DSH sessions for the QQ bridge",
+      "path": "plugins/dsh-qq-session-resumer"
+    },
+    {
+      "name": "dsh-qq-social",
+      "version": "0.1.0",
+      "description": "给 Amiko 的 QQ 社交工具：换头像、发空间、删说说（带每日配额）",
+      "path": "plugins/dsh-qq-social"
+    },
+    {
+      "name": "dsh-speak-up",
+      "version": "0.2.4",
+      "description": "主动搭话（dsh-speak-up）：DSH 插件。没人在跟她说话的时候，她也会自己起个话头 —— 按你设的间隔掷一次本地骰子（不花模型），掷中了就走 DSH 自己的一轮（人格、历史、工具、记忆全都是她自己的）。",
+      "path": "plugins/dsh-speak-up"
+    }
+  ],
+  "thirdParty": [
+    {
+      "name": "dsh-soul-md",
+      "version": "0.10.3",
+      "repo": "https://github.com/Scorp1o117/dsh-soul-md"
+    },
+    {
+      "name": "dsh-plugin-memory",
+      "version": "0.10.0",
+      "repo": "https://github.com/LittleBlackTong/dsh-plugin-memory"
+    },
+    {
+      "name": "dsh-token-optimizer",
+      "version": "0.2.4",
+      "repo": "https://github.com/Snow-ea/dsh-token-optimizer"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+# secrets and local state
+**/.env
+**/*.key
+**/*.pem
+**/credentials*
+**/*token*
+**/qq-bridge-config.json
+**/qq-social-state.json
+**/qq-media.json
+**/speak-up-config.json
+**/fish-memory-config.json
+**/settings.yaml
+**/.credentials.yaml
+**/sessions/
+**/attachments/
+**/inbox/
+**/logs/
+**/*.log
+**/*.bak
+**/*.tmp
+**/backups/
+**/node_modules/
+**/.pnpm/
+**/dist/
+**/__pycache__/
+**/*.pyc
+**/.DS_Store

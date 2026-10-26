@@ -1,0 +1,9 @@
+{
+  "name": "dsh-amiko-p0",
+  "version": "0.1.0",
+  "description": "Amiko P0: integrity audit, life timeline, self-paced rhythm",
+  "type": "module",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+}
