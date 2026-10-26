@@ -18,3 +18,9 @@
 这是声音数据集，不是现成的 TTS/RVC 模型。
 要真正换成这个音色，还需要 GPT-SoVITS 或 RVC 的推理/训练环境。
 音频不提交到公开仓库，只在本地使用；非商业用途。
+
+## 推荐参考片段
+
+`D:\DSH\voices\reference-da-fei-yu.wav`
+
+约 4.5 秒，来自数据集 `dwg_0002`，可用于 GPT-SoVITS 零样本试听。
