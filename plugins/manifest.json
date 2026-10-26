@@ -13,6 +13,12 @@
       "path": "plugins/dsh-amiko-p0"
     },
     {
+      "name": "dsh-amiko-p1",
+      "version": "0.1.0",
+      "description": "Amiko P1: life ingestion, consent records, memory corrections, integrity watch",
+      "path": "plugins/dsh-amiko-p1"
+    },
+    {
       "name": "dsh-bili-whale",
       "version": "0.4.6",
       "description": "养一条有日子的鱼：让 DSH 里的 agent 自己刷 B 站、看懂视频、写两本日记，把值得的 @ 你。设置里有「养鱼」完整设置页（27 项）+ 依赖体检 + cookie 写入 + 共享配置（与工具链同一份 bili-whale.config.json）。",
@@ -37,12 +43,6 @@
       "path": "plugins/dsh-fish-tone"
     },
     {
-      "name": "dsh-persona-dafeiyu",
-      "version": "0.5.0",
-      "description": "人设插件 for DeepSeek Harness：内置大肥鱼、阿茶与听澜，支持导入自定义人设（文件或粘贴）与单条导出，可按全局 / 工作区 / 会话三档生效，切换后下一个请求即时生效、无需重启；界面中英双语。",
-      "path": "plugins/dsh-persona-dafeiyu"
-    },
-    {
       "name": "dsh-qq-bridge",
       "version": "1.0.4",
       "description": "通到 QQ：DSH 里的 AI 伙伴和 QQ 双向互通 —— 它说完话自动发到 QQ，你在 QQ 里说的话自动转进 DSH。走 OneBot 11 HTTP（SnowLuma / NapCat 都行）。",
@@ -55,12 +55,6 @@
       "path": "plugins/dsh-qq-media"
     },
     {
-      "name": "dsh-qq-session-opener",
-      "version": "0.1.0",
-      "description": "Open or resume DSH sessions for the QQ bridge",
-      "path": "plugins/dsh-qq-session-opener"
-    },
-    {
       "name": "dsh-qq-session-resumer",
       "version": "0.1.0",
       "description": "Resume DSH sessions for the QQ bridge",
@@ -71,12 +65,6 @@
       "version": "0.1.0",
       "description": "给 Amiko 的 QQ 社交工具：换头像、发空间、删说说（带每日配额）",
       "path": "plugins/dsh-qq-social"
-    },
-    {
-      "name": "dsh-speak-up",
-      "version": "0.2.4",
-      "description": "主动搭话（dsh-speak-up）：DSH 插件。没人在跟她说话的时候，她也会自己起个话头 —— 按你设的间隔掷一次本地骰子（不花模型），掷中了就走 DSH 自己的一轮（人格、历史、工具、记忆全都是她自己的）。",
-      "path": "plugins/dsh-speak-up"
     }
   ],
   "thirdParty": [

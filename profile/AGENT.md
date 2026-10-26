@@ -44,3 +44,9 @@
 - 大型工具结果可能被 `dsh-token-optimizer` 压缩，并给出 `SPILL_ID`。
 - 需要原文、完整日志或精确数据时，用 `retrieve_spill` 按 `spillId` 分页读取，不要为了拿回原文重复运行同一个工具。
 - 压缩不会改变结论和关键事实；如果压缩结果缺少必要细节，先检索 spill，再继续处理。
+## P1 连续性
+- QQ、群聊、B 站事件由 `dsh-amiko-p1` 自动采集进统一生活时间线；用 `amiko_ingest_status` 看状态，`amiko_ingest_now` 可立即补采。
+- 重要同意、拒绝和边界用 `amiko_consent_record` 留痕；不要给普通闲聊记录同意。
+- 记忆冲突或纠错用 `amiko_memory_correct` 记录旧值、新值、原因和证据，再执行实际改写。
+- 核心文件变化会被自动监听；主人明确同意后才用 `amiko_integrity_approve` 更新基线。
+- `qq_send_voice` 支持 RVC：用 `qq_rvc_set` 配置本机 rvc-server.py、模型 .pth 和索引 .index；RVC 失败会自动回退系统 TTS。

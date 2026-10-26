@@ -75,3 +75,14 @@
 - 可识别主人的私人资料
 
 只提交脱敏后的身份、结构、规则与成长摘要。
+
+## P1 新增
+
+- 自动采集 QQ、群聊、B 站事件到统一生活时间线
+- 同意、拒绝和边界记录
+- 记忆冲突与纠错记录
+- 核心文件变化的自动完整性监听
+- QQ 语音 RVC 桥：配置本地 rvc-server.py、.pth 和 .index 后可用
+- 清理了不再使用的 dsh-speak-up、dsh-persona-dafeiyu、dsh-qq-session-opener
+
+RVC 桥已用 mock 服务验证；真实音色还需要本机模型和推理服务。

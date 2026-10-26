@@ -1,0 +1,10 @@
+{
+  "name": "dsh-qq-media",
+  "version": "0.1.0",
+  "description": "Amiko QQ voice and sticker tools",
+  "type": "module",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "dependencies": {},
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+}

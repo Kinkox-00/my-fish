@@ -1,7 +1,7 @@
 {
-  "name": "dsh-qq-session-opener",
+  "name": "dsh-amiko-p1",
   "version": "0.1.0",
-  "description": "Open or resume DSH sessions for the QQ bridge",
+  "description": "Amiko P1: life ingestion, consent records, memory corrections, integrity watch",
   "type": "module",
   "main": "lib/index.js",
   "license": "MIT",
