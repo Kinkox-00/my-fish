@@ -34,7 +34,11 @@
 
 ## 本次新增的第三方桌面/外观插件
 
-- dsh-pet 0.3.8：DSH 页面内大肥鱼桌宠
 - dsh-dafeiyu 0.1.19：原生桌面悬浮大肥鱼
 - dsh-flash-presets 0.2.4：Flash 低 token 预设
 - dsh-plugin-wallpaper-engine 1.4.0：Wallpaper Engine 壁纸与液态玻璃
+
+## 桌宠最终保留
+
+- dsh-dafeiyu 0.1.19：唯一保留的原生桌面宠
+- dsh-pet 已移除，Wallpaper Engine 吉祥物已关闭

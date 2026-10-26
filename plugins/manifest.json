@@ -108,11 +108,6 @@
       "repo": "https://github.com/Snow-ea/dsh-token-optimizer"
     },
     {
-      "name": "dsh-pet",
-      "version": "0.3.8",
-      "repo": "https://github.com/PC2005-cloud/dsh-pet"
-    },
-    {
       "name": "dsh-dafeiyu",
       "version": "0.1.19",
       "repo": "https://github.com/QCYTSN/dsh-dafeiyu"

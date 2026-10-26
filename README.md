@@ -110,7 +110,6 @@ RVC 桥已用 mock 服务验证；真实音色还需要本机模型和推理服�
 
 已安装并加入 desktop profile：
 
-- dsh-pet 0.3.8：DSH 页面内大肥鱼桌宠，Q 弹、余额、碎碎念
 - dsh-dafeiyu 0.1.19：原生桌面悬浮大肥鱼，跟随 Agent 状态
 - dsh-flash-presets 0.2.4：Flash 低 token 预设 v1/v2/v3
 - dsh-plugin-wallpaper-engine 1.4.0：本机 Wallpaper Engine 场景/视频壁纸 + 液态玻璃外观
@@ -121,3 +120,9 @@ RVC 桥已用 mock 服务验证；真实音色还需要本机模型和推理服�
 - D:\DSH\workspace\default-workspace
 
 原 C 盘路径保留为目录联接，旧会话不需要改 cwd。
+
+### 桌宠精简
+
+- 只保留 `dsh-dafeiyu` 一只原生桌宠；`dsh-pet` 已卸载删除。
+- Wallpaper Engine 吉祥物拉绳已关闭，会话头像挂件也关闭。
+- 场景壁纸帧率降到 15 FPS，总帧率上限 30 FPS，减少 GPU 压力。
