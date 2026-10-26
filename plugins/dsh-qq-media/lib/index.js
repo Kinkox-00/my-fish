@@ -20,6 +20,13 @@ const DEFAULT_CFG = {
   rate: 0,
   maxVoicePerHour: 6,
   maxStickerPerHour: 12,
+  rvc: {
+    enabled: false,
+    endpoint: 'http://127.0.0.1:4892',
+    model: '',
+    index: '',
+    params: { f0_up_key: 0, f0_method: 'rmvpe', index_rate: 0.75, filter_radius: 3, resample_sr: 0, rms_mix_rate: 0.25, protect: 0.33 },
+  },
 }
 const sent = { voice: [], sticker: [] }
 const OUTPUT = {
@@ -107,6 +114,29 @@ async function sendMessage(segments, target, dryRun) {
   const data = await napcat(action, payload)
   return { ok: true, target, message_id: Number(data?.message_id || 0) || undefined }
 }
+async function rvcConvert(wavPath, rvc) {
+  const endpoint = String(rvc.endpoint || 'http://127.0.0.1:4892').replace(/\/+$/, '')
+  const audio = readFileSync(wavPath).toString('base64')
+  if (String(rvc.model || '').trim()) {
+    const load = await fetch(endpoint + '/load', {
+      method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ model: String(rvc.model), index: String(rvc.index || '') }),
+      signal: AbortSignal.timeout(120000),
+    })
+    if (!load.ok) throw new Error('RVC 模型加载失败 HTTP ' + load.status)
+  }
+  const params = { f0_up_key: 0, f0_method: 'rmvpe', index_rate: 0.75, filter_radius: 3, resample_sr: 40000, rms_mix_rate: 0.25, protect: 0.33, ...(rvc.params || {}) }
+  const res = await fetch(endpoint + '/convert', {
+    method: 'POST', headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ audio_base64: audio, params }),
+    signal: AbortSignal.timeout(180000),
+  })
+  const j = await res.json().catch(() => ({}))
+  if (!res.ok || !j.audio_base64) throw new Error('RVC 转换失败 HTTP ' + res.status + ' ' + String(j.detail || j.error || ''))
+  const out = wavPath.replace(/\.wav$/i, '-rvc.wav')
+  writeFileSync(out, Buffer.from(String(j.audio_base64), 'base64'))
+  return out
+}
 async function makeVoice(text) {
   const cfg = config()
   const id = Date.now() + '-' + Math.random().toString(36).slice(2)
@@ -115,7 +145,14 @@ async function makeVoice(text) {
   writeFileSync(txt, text, 'utf8')
   try {
     await execFileAsync('powershell.exe', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', TTS_SCRIPT, '-TextFile', txt, '-OutputFile', wav, '-Voice', String(cfg.voice || DEFAULT_CFG.voice), '-Rate', String(Number(cfg.rate) || 0)], { windowsHide: true, timeout: 90000 })
-    return { wav, cleanup: () => { try { unlinkSync(txt) } catch {}; try { unlinkSync(wav) } catch {} } }
+    let finalWav = wav
+    let engine = 'sapi'
+    let warning = ''
+    if (cfg.rvc && cfg.rvc.enabled) {
+      try { finalWav = await rvcConvert(wav, cfg.rvc); engine = 'rvc' }
+      catch (error) { warning = 'RVC 失败，已回退系统 TTS：' + String(error?.message || error) }
+    }
+    return { wav: finalWav, engine, warning, cleanup: () => { try { unlinkSync(txt) } catch {}; try { unlinkSync(wav) } catch {}; if (finalWav !== wav) { try { unlinkSync(finalWav) } catch {} } } }
   } catch (error) {
     try { unlinkSync(txt) } catch {}
     try { unlinkSync(wav) } catch {}
@@ -170,6 +207,7 @@ export function apply(root) {
             `私聊主人 QQ：${b.owner || '未配置'}`, 
             `当前会话目标：${target.kind === 'group' ? '群 ' + target.id : '主人私聊 ' + target.id}`, 
             `语音：${cfg.voice || DEFAULT_CFG.voice}，语速 ${cfg.rate || 0}`,
+            'RVC：' + (cfg.rvc?.enabled ? '开启 ' + (cfg.rvc.endpoint || '') + ' ' + (cfg.rvc.model || '未选模型') : '关闭'),
             `表情包：${list.length} 张`,
             `可用 tag：${list.map((s) => s.label).join(' / ')}`,
           ].join('\n'),
@@ -177,6 +215,30 @@ export function apply(root) {
       },
     })
 
+    ctx.tools.register({
+      name: 'qq_rvc_set',
+      description: '配置 QQ 语音的 RVC 音色：服务地址、模型 .pth、索引 .index 和转换参数。需要本机已启动兼容 rvc-server.py 的服务。',
+      parameters: { type: 'object', additionalProperties: false, properties: {
+        enabled: { type: 'boolean' },
+        endpoint: { type: 'string' },
+        model: { type: 'string' },
+        index: { type: 'string' },
+        params: { type: 'object', additionalProperties: true },
+      } },
+      output: OUTPUT,
+      execute: async (args) => {
+        const cfg = config()
+        const rvc = { ...(cfg.rvc || {}) }
+        if (typeof args?.enabled === 'boolean') rvc.enabled = args.enabled
+        if (typeof args?.endpoint === 'string' && args.endpoint.trim()) rvc.endpoint = args.endpoint.trim()
+        if (typeof args?.model === 'string') rvc.model = args.model.trim()
+        if (typeof args?.index === 'string') rvc.index = args.index.trim()
+        if (args?.params && typeof args.params === 'object') rvc.params = { ...(rvc.params || {}), ...args.params }
+        cfg.rvc = rvc
+        writeFileSync(CFG_PATH, JSON.stringify(cfg, null, 2) + '\n', 'utf8')
+        return { ok: true, message: 'RVC 配置已保存：' + (rvc.enabled ? '开启 ' + (rvc.endpoint || '') : '关闭') + (rvc.model ? '，模型 ' + rvc.model : '') }
+      },
+    })
     ctx.tools.register({
       name: 'qq_send_voice',
       description: '把一段短文字用本地 TTS 转成语音，并按当前 qq-bridge 绑定发送：私聊发给主人，群会话发到对应群。适合撒娇、晚安、短句回应；不要发长文或正式报告。dry_run=true 只生成语音不发送。',
@@ -201,10 +263,10 @@ export function apply(root) {
         let voice
         try {
           voice = await makeVoice(text)
-          if (args?.dry_run === true) return { ok: true, message: `语音生成成功（dry run，未发送；${text.length} 字）。` }
+          if (args?.dry_run === true) return { ok: true, message: '语音生成成功（dry run，未发送；' + text.length + ' 字；引擎 ' + (voice.engine || 'unknown') + '）。' + (voice.warning ? '\n' + voice.warning : '') }
           const b64 = readFileSync(voice.wav).toString('base64')
           const r = await sendMessage([{ type: 'record', data: { file: 'base64://' + b64 } }], target, false)
-          return { ok: true, message_id: r.message_id, message: `语音已发送（${text.length} 字）。` }
+          return { ok: true, message_id: r.message_id, message: '语音已发送（' + text.length + ' 字；引擎 ' + (voice.engine || 'unknown') + '）。' + (voice.warning ? '\n' + voice.warning : '') }
         } catch (error) {
           return { ok: false, message: '发语音失败：' + String(error?.message || error) }
         } finally {
