@@ -6,7 +6,7 @@ $dst = Join-Path $repo "plugins"
 
 $names = @(
   "dsh-agent-md","dsh-amiko-p0","dsh-amiko-p1","dsh-amiko-identity",
-  "dsh-amiko-friend-link","dsh-bili-whale",
+  "dsh-amiko-friend-link","dsh-amiko-budget","dsh-bili-avatar","dsh-bili-whale",
   "dsh-feiyu-mood","dsh-fish-memory","dsh-qq-bridge","dsh-qq-media",
   "dsh-qq-session-resumer","dsh-qq-social"
 )

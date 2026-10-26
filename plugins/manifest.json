@@ -7,6 +7,12 @@
       "path": "plugins/dsh-agent-md"
     },
     {
+      "name": "dsh-amiko-budget",
+      "version": "0.1.0",
+      "description": "Amiko daily autonomy budget guard",
+      "path": "plugins/dsh-amiko-budget"
+    },
+    {
       "name": "dsh-amiko-friend-link",
       "version": "0.1.0",
       "description": "Share and import Amiko identity cards for friend recognition",
@@ -29,6 +35,12 @@
       "version": "0.1.0",
       "description": "Amiko P1: life ingestion, consent records, memory corrections, integrity watch",
       "path": "plugins/dsh-amiko-p1"
+    },
+    {
+      "name": "dsh-bili-avatar",
+      "version": "0.1.0",
+      "description": "Set Amiko Bilibili avatar via local browser session",
+      "path": "plugins/dsh-bili-avatar"
     },
     {
       "name": "dsh-bili-whale",

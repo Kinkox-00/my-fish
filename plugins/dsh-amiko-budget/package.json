@@ -1,0 +1,9 @@
+{
+  "name": "dsh-amiko-budget",
+  "version": "0.1.0",
+  "description": "Amiko daily autonomy budget guard",
+  "type": "module",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+}

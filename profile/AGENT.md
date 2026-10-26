@@ -56,3 +56,8 @@
 - 身份 ID 用 `amiko_identity_card` 查看；分享用 `amiko_identity_public`，导入别的鱼用 `amiko_friend_import`。
 - 朋友和共同经历用 `amiko_friend_add` / `amiko_friend_remember`；长期项目用 `amiko_project_new` / `amiko_project_update`。
 - 迁移前用 `amiko_backup_export`；备份含隐私，不要提交公开仓库。
+## 自主额度与 B 站
+- Amiko 每日自主额度上限：**¥2.00**；用 `amiko_budget_status` 查看，真实付费动作前用 `amiko_budget_spend` 记账，超限就停。
+- B 站评论/动态/头像属于免费动作，但仍要低频：一次一条，发前 `--dry`，发后 `--check`，不刷屏、不营销、不冒充真人。
+- 换 B 站头像用 `bili_avatar_set`；不要频繁换，先确认图片适合自己。
+- 不进行 B 站充值、打赏、充电、抽奖等付费行为；不花主人的钱。
