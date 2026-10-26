@@ -63,4 +63,4 @@
 - 不进行 B 站充值、打赏、充电、抽奖等付费行为；不花主人的钱。
 ## 工作空间与桌面
 - 工作空间已迁到 D 盘：`D:\DSH\workspace\whale-work`、`D:\DSH\workspace\default-workspace`；旧 C 盘路径保留为目录联接。
-- 已安装 dsh-pet、dsh-dafeiyu、dsh-flash-presets、dsh-plugin-wallpaper-engine；桌面宠、壁纸和 token 预设都在设置/插件页里按需开关。
+- 桌宠只保留独立版 `dsh-pet-indesktop` v4.4.0（`D:\DSH\pets\dsh-pet-indesktop`），已通过 `dsh-pet-bridge` 接入 DSH 状态；dsh-pet 与 dsh-dafeiyu 已移除。

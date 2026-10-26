@@ -40,5 +40,11 @@
 
 ## 桌宠最终保留
 
-- dsh-dafeiyu 0.1.19：唯一保留的原生桌面宠
-- dsh-pet 已移除，Wallpaper Engine 吉祥物已关闭
+- dsh-pet-indesktop 4.4.0：唯一保留的独立原生桌面宠
+- dsh-pet、dsh-dafeiyu 已移除，Wallpaper Engine 吉祥物已关闭
+
+## dsh-pet-bridge
+
+- 来源：MerZlin/dsh-pet-indesktop `integrations/dsh-pet-bridge`
+- 作用：把 DSH Agent 状态写入 `%APPDATA%\dsh-pet-bridge\dsh-*.jsonl`，供独立桌宠读取
+- 版本：0.2.0

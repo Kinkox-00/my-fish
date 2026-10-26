@@ -67,6 +67,12 @@
       "path": "plugins/dsh-fish-tone"
     },
     {
+      "name": "@dsh-pet/bridge",
+      "version": "0.2.0",
+      "description": "dsh-pet 桌宠桥接：把 DSH agent 状态事件写入本地 jsonl，并提供可选的 watchdog 控制（仅本地文件，无任何网络请求）",
+      "path": "plugins/dsh-pet-bridge"
+    },
+    {
       "name": "dsh-qq-bridge",
       "version": "1.0.4",
       "description": "通到 QQ：DSH 里的 AI 伙伴和 QQ 双向互通 —— 它说完话自动发到 QQ，你在 QQ 里说的话自动转进 DSH。走 OneBot 11 HTTP（SnowLuma / NapCat 都行）。",
@@ -108,11 +114,6 @@
       "repo": "https://github.com/Snow-ea/dsh-token-optimizer"
     },
     {
-      "name": "dsh-dafeiyu",
-      "version": "0.1.19",
-      "repo": "https://github.com/QCYTSN/dsh-dafeiyu"
-    },
-    {
       "name": "dsh-flash-presets",
       "version": "0.2.4",
       "repo": "https://github.com/LarryE135/dsh-flash-presets"
@@ -121,6 +122,16 @@
       "name": "dsh-plugin-wallpaper-engine",
       "version": "1.4.0",
       "repo": "https://github.com/elysia395/dsh-wallpaper-engine"
+    },
+    {
+      "name": "dsh-pet-indesktop",
+      "version": "4.4.0",
+      "repo": "https://github.com/MerZlin/dsh-pet-indesktop"
+    },
+    {
+      "name": "dsh-pet-bridge",
+      "version": "0.2.0",
+      "repo": "https://github.com/MerZlin/dsh-pet-indesktop/tree/main/integrations/dsh-pet-bridge"
     }
   ]
 }

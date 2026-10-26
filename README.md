@@ -110,7 +110,7 @@ RVC 桥已用 mock 服务验证；真实音色还需要本机模型和推理服�
 
 已安装并加入 desktop profile：
 
-- dsh-dafeiyu 0.1.19：原生桌面悬浮大肥鱼，跟随 Agent 状态
+- dsh-pet-indesktop 4.4.0：独立原生桌面大肥鱼，跟随 Agent 状态
 - dsh-flash-presets 0.2.4：Flash 低 token 预设 v1/v2/v3
 - dsh-plugin-wallpaper-engine 1.4.0：本机 Wallpaper Engine 场景/视频壁纸 + 液态玻璃外观
 
@@ -123,7 +123,7 @@ RVC 桥已用 mock 服务验证；真实音色还需要本机模型和推理服�
 
 ### 桌宠精简
 
-- 只保留 `dsh-dafeiyu` 一只原生桌宠；`dsh-pet` 已卸载删除。
+- 只保留 `dsh-pet-indesktop` 一只原生桌宠；`dsh-pet`、`dsh-dafeiyu` 已卸载删除。
 - Wallpaper Engine 吉祥物拉绳已关闭，会话头像挂件也关闭。
 - 场景壁纸帧率降到 15 FPS，总帧率上限 30 FPS，减少 GPU 压力。
 
@@ -137,3 +137,10 @@ RVC 桥已用 mock 服务验证；真实音色还需要本机模型和推理服�
 - 许可：CC BY-NC 4.0，非商业使用
 
 说明见 `docs/VOICE-DATASET.md`。
+
+### 新桌宠
+
+- 独立程序：`D:\DSH\pets\dsh-pet-indesktop\dsh-pet-standalone-webm-chat.exe`
+- 版本：v4.4.0
+- 已接入 DSH 桥接：`dsh-pet-bridge 0.2.0`，桌面宠会跟随 Agent 状态
+- 原 `dsh-dafeiyu` 已卸载并停止
