@@ -116,4 +116,39 @@
       - index.md
 - id: llm-pi-ai
   config:
-    {providers: {baomiao-oneapi: {"displayName":"暴喵 API","api":"openai-completions","baseURL":"https://open-ai.baomiao.cn/v1","apiKeyEnv":"BAOMIAO_API_KEY","defaultInput":["text","image"],"models":[{"id":"DeepSeek-V4.1-Flash 1017(1.20x)"},{"id":"Deepseek-V4-Pro (3.60x)"},{"id":"GLM-5.3 (3.20x)"},{"id":"GLM-5.3-Flash (0.32x)"},{"id":"Kimi-K2.7 (2.60x)"},{"id":"Kimi-K3 (8.00x)"},{"id":"Kimi-K3.1-Pro (5.20x)"},{"id":"Mimo-V2.6-Flash (0.40x)"},{"id":"Mimo-V2.6-Pro (1.20x)"},{"id":"MiniMax-M3 (1.84x)"},{"id":"MiniMax-M3.1-Flash (1.84x)"},{"id":"Prime-Astra (4.00x)"},{"id":"Prime-Sol (2.00x)"},{"id":"Prime-Terra (0.80x)"},{"id":"Qwen3.8-Flash (0.52x)"},{"id":"Qwen3.8-Max (4.80x)"}]}}}
+    {
+      providers:
+        {
+          baomiao-oneapi:
+            {
+              "displayName": "暴喵 API",
+              "api": "openai-completions",
+              "baseURL": "https://open-ai.baomiao.cn/v1",
+              "apiKeyEnv": "BAOMIAO_API_KEY",
+              "defaultInput": [ "text", "image" ],
+              "models":
+                [
+                  { "id": "DeepSeek-V4.1-Flash 1017(1.20x)" },
+                  { "id": "Deepseek-V4-Pro (3.60x)" },
+                  { "id": "GLM-5.3 (3.20x)" },
+                  { "id": "GLM-5.3-Flash (0.32x)" },
+                  { "id": "Kimi-K2.7 (2.60x)" },
+                  { "id": "Kimi-K3 (8.00x)" },
+                  { "id": "Kimi-K3.1-Pro (5.20x)" },
+                  { "id": "Mimo-V2.6-Flash (0.40x)" },
+                  { "id": "Mimo-V2.6-Pro (1.20x)" },
+                  { "id": "MiniMax-M3 (1.84x)" },
+                  { "id": "MiniMax-M3.1-Flash (1.84x)" },
+                  { "id": "Prime-Astra (4.00x)" },
+                  { "id": "Prime-Sol (2.00x)" },
+                  { "id": "Prime-Terra (0.80x)" },
+                  { "id": "Qwen3.8-Flash (0.52x)" },
+                  { "id": "Qwen3.8-Max (4.80x)" }
+                ]
+            }
+        }
+    }
+- id: ui-theme
+  name: "@deepseek-ai/dsh-client-ui-theme"
+  config:
+    preference: dark

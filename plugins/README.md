@@ -31,3 +31,10 @@
 - dsh-speak-up：由 amiko-p0 自主节奏替代
 - dsh-persona-dafeiyu：由 dsh-soul-md 替代
 - dsh-qq-session-opener：由 dsh-qq-session-resumer 替代
+
+## 本次新增的第三方桌面/外观插件
+
+- dsh-pet 0.3.8：DSH 页面内大肥鱼桌宠
+- dsh-dafeiyu 0.1.19：原生桌面悬浮大肥鱼
+- dsh-flash-presets 0.2.4：Flash 低 token 预设
+- dsh-plugin-wallpaper-engine 1.4.0：Wallpaper Engine 壁纸与液态玻璃

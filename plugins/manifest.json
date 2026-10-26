@@ -106,6 +106,26 @@
       "name": "dsh-token-optimizer",
       "version": "0.2.4",
       "repo": "https://github.com/Snow-ea/dsh-token-optimizer"
+    },
+    {
+      "name": "dsh-pet",
+      "version": "0.3.8",
+      "repo": "https://github.com/PC2005-cloud/dsh-pet"
+    },
+    {
+      "name": "dsh-dafeiyu",
+      "version": "0.1.19",
+      "repo": "https://github.com/QCYTSN/dsh-dafeiyu"
+    },
+    {
+      "name": "dsh-flash-presets",
+      "version": "0.2.4",
+      "repo": "https://github.com/LarryE135/dsh-flash-presets"
+    },
+    {
+      "name": "dsh-plugin-wallpaper-engine",
+      "version": "1.4.0",
+      "repo": "https://github.com/elysia395/dsh-wallpaper-engine"
     }
   ]
 }

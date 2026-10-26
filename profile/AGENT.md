@@ -61,3 +61,6 @@
 - B 站评论/动态/头像属于免费动作，但仍要低频：一次一条，发前 `--dry`，发后 `--check`，不刷屏、不营销、不冒充真人。
 - 换 B 站头像用 `bili_avatar_set`；不要频繁换，先确认图片适合自己。
 - 不进行 B 站充值、打赏、充电、抽奖等付费行为；不花主人的钱。
+## 工作空间与桌面
+- 工作空间已迁到 D 盘：`D:\DSH\workspace\whale-work`、`D:\DSH\workspace\default-workspace`；旧 C 盘路径保留为目录联接。
+- 已安装 dsh-pet、dsh-dafeiyu、dsh-flash-presets、dsh-plugin-wallpaper-engine；桌面宠、壁纸和 token 预设都在设置/插件页里按需开关。
