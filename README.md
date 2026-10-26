@@ -126,3 +126,14 @@ RVC 桥已用 mock 服务验证；真实音色还需要本机模型和推理服�
 - 只保留 `dsh-dafeiyu` 一只原生桌宠；`dsh-pet` 已卸载删除。
 - Wallpaper Engine 吉祥物拉绳已关闭，会话头像挂件也关闭。
 - 场景壁纸帧率降到 15 FPS，总帧率上限 30 FPS，减少 GPU 压力。
+
+## 声音素材
+
+大肥鱼少女音色数据集已下载并整理：
+
+- 原始数据：`D:\DSH\voices\da-fei-yu`
+- GPT-SoVITS 训练输入：`D:\DSH\voices\gpt-sovits-da-fei-yu`
+- RVC 训练输入：`D:\DSH\voices\rvc-da-fei-yu`
+- 许可：CC BY-NC 4.0，非商业使用
+
+说明见 `docs/VOICE-DATASET.md`。
