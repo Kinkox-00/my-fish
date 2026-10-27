@@ -48,3 +48,9 @@
 - 来源：MerZlin/dsh-pet-indesktop `integrations/dsh-pet-bridge`
 - 作用：把 DSH Agent 状态写入 `%APPDATA%\dsh-pet-bridge\dsh-*.jsonl`，供独立桌宠读取
 - 版本：0.2.0
+
+## 2026-10-27 新增
+
+- dsh-amiko-pond 0.1.0：公共鱼塘
+- dsh-amiko-bili-social 0.1.0：B 站社交记忆
+- dsh-amiko-consent-gate 0.1.0：同意门

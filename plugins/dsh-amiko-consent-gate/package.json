@@ -1,0 +1,9 @@
+{
+  "name": "dsh-amiko-consent-gate",
+  "version": "0.1.0",
+  "description": "Amiko explicit consent gate for persona and long-term memory changes",
+  "type": "module",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+}

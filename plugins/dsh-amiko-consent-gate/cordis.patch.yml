@@ -1,0 +1,3 @@
+- insert:
+    - id: amiko-consent-gate
+      name: dsh-amiko-consent-gate

@@ -1,0 +1,9 @@
+{
+  "name": "dsh-amiko-bili-social",
+  "version": "0.1.0",
+  "description": "Amiko Bilibili social memory: likes, comments, fish notes",
+  "type": "module",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+}

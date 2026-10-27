@@ -1,0 +1,9 @@
+{
+  "name": "dsh-amiko-pond",
+  "version": "0.1.0",
+  "description": "Amiko public pond discovery: publish and scan identity cards",
+  "type": "module",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+}

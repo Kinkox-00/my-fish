@@ -144,3 +144,11 @@ RVC 桥已用 mock 服务验证；真实音色还需要本机模型和推理服�
 - 版本：v4.4.0
 - 已接入 DSH 桥接：`dsh-pet-bridge 0.2.0`，桌面宠会跟随 Agent 状态
 - 原 `dsh-dafeiyu` 已卸载并停止
+
+## 2026-10-27 功能补齐
+
+- `dsh-amiko-pond`：公共鱼塘身份卡发布/扫描，跨实例认识朋友
+- `dsh-amiko-bili-social`：B 站互动扫描、朋友笔记、whois
+- `dsh-amiko-consent-gate`：人设/长期记忆改动的显式同意门与审计
+- 桌宠顶部灵动岛 bar 已关闭；余额改为右键/气泡入口
+- 大肥鱼音色数据集已准备 GPT-SoVITS / RVC 输入

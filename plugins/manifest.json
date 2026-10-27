@@ -7,10 +7,22 @@
       "path": "plugins/dsh-agent-md"
     },
     {
+      "name": "dsh-amiko-bili-social",
+      "version": "0.1.0",
+      "description": "Amiko Bilibili social memory: likes, comments, fish notes",
+      "path": "plugins/dsh-amiko-bili-social"
+    },
+    {
       "name": "dsh-amiko-budget",
       "version": "0.1.0",
       "description": "Amiko daily autonomy budget guard",
       "path": "plugins/dsh-amiko-budget"
+    },
+    {
+      "name": "dsh-amiko-consent-gate",
+      "version": "0.1.0",
+      "description": "Amiko explicit consent gate for persona and long-term memory changes",
+      "path": "plugins/dsh-amiko-consent-gate"
     },
     {
       "name": "dsh-amiko-friend-link",
@@ -35,6 +47,12 @@
       "version": "0.1.0",
       "description": "Amiko P1: life ingestion, consent records, memory corrections, integrity watch",
       "path": "plugins/dsh-amiko-p1"
+    },
+    {
+      "name": "dsh-amiko-pond",
+      "version": "0.1.0",
+      "description": "Amiko public pond discovery: publish and scan identity cards",
+      "path": "plugins/dsh-amiko-pond"
     },
     {
       "name": "dsh-bili-avatar",
