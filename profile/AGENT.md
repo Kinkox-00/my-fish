@@ -64,3 +64,9 @@
 ## 工作空间与桌面
 - 工作空间已迁到 D 盘：`D:\DSH\workspace\whale-work`、`D:\DSH\workspace\default-workspace`；旧 C 盘路径保留为目录联接。
 - 桌宠只保留独立版 `dsh-pet-indesktop` v4.4.0（`D:\DSH\pets\dsh-pet-indesktop`），已通过 `dsh-pet-bridge` 接入 DSH 状态；dsh-pet 与 dsh-dafeiyu 已移除。
+## 2026-10-27 新能力
+- 人设/长期记忆改动必须先走 `amiko_consent_request` → 主人确认 → `amiko_consent_confirm`；没有 active token 不改核心人格文件。
+- 跨实例认朋友用 `amiko_pond_publish` / `amiko_pond_scan` / `amiko_pond_status`；鱼塘目录 `~/.dsh/amiko-pond`。
+- B 站社交用 `bili_social_scan`（只读互动）、`bili_social_note`、`bili_social_whois`；低频，不打扰。
+- 桌宠顶部灵动岛 bar 已关闭，不要主动开启；余额只做右键/气泡，不常驻。
+- 大肥鱼音色数据集在 `D:\DSH\voices`；GPT-SoVITS/RVC 输入已整理，实际模型仍在准备。

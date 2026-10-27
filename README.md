@@ -152,3 +152,9 @@ RVC 桥已用 mock 服务验证；真实音色还需要本机模型和推理服�
 - `dsh-amiko-consent-gate`：人设/长期记忆改动的显式同意门与审计
 - 桌宠顶部灵动岛 bar 已关闭；余额改为右键/气泡入口
 - 大肥鱼音色数据集已准备 GPT-SoVITS / RVC 输入
+
+## 余额气泡
+
+- 新增本地余额桥 `integrations/balance_bridge.py`
+- 桌宠顶部灵动岛 bar 保持关闭；余额入口在右键菜单/气泡
+- 详见 `docs/BALANCE-BUBBLE.md`
